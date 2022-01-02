@@ -4,6 +4,7 @@ import React, { useCallback, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import qs from 'qs';
+import QrfsButton from './shared/qrfsButton';
 
 export default function login() {
 
@@ -14,7 +15,7 @@ export default function login() {
     const qrfsblack = require('../assets/logos/qrfs-black.png');
     const baseURL = "http://localhost:3000/api/auth/login"
 
-    const myOnPress = () => {
+    const onPress = () => {
         let data = {'email': user, 'password': pass}
         let config = {
             headers: {
@@ -37,7 +38,7 @@ export default function login() {
                 <Text style={styles.labelText}>PASSWORD</Text>
                 <TextInput value={pass} onChangeText={setPass} style={styles.textInput}/>
                 <Pressable style={styles.forgotBtn}><Text style={styles.forgotText}>FORGOT PASSWORD</Text></Pressable>
-                <Pressable onPress={myOnPress} style={styles.loginBtn}><Text style={styles.loginText}>LOGIN</Text></Pressable>
+                <QrfsButton text="LOGIN" onPress={onPress}/>
                 <Text style={styles.signupText}>DON'T HAVE AN ACCOUNT? <Pressable style={styles.signupBtn}><Text style={styles.signupText1}>SIGN UP</Text></Pressable></Text>
             </ImageBackground>
         </View>
@@ -91,14 +92,6 @@ const styles = StyleSheet.create({
     forgotText: {
         color: 'white'
     },
-    loginBtn: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#EB610C',
-        width: 300,
-        height: '6%',
-        marginVertical: 15
-    },
     signupText: {
         color: 'white',
         fontSize: 15
@@ -111,9 +104,4 @@ const styles = StyleSheet.create({
     signupBtn: {
         height: 18
     },
-    loginText: {
-        fontSize: 27,
-        color: 'white'
-    }
-
   });
