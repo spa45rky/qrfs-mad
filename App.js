@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useCallback, useEffect } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Login from './components/login';
 import Register from './components/register';
-import Dashboard from './components/dashboard';
 import UserHome from './components/userHome';
-import UserDashboard from './components/dashboard';
+import SquaredButton from './components/shared/squaredButton';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoginHere, setIsLoginHere] = React.useState(false)
@@ -20,10 +23,15 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
-      <Register/>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+                <Stack.Navigator initialRouteName='UserHome' screenOptions={{
+                  headerShown: false
+                }}>
+                    <Stack.Screen name="UserHome" component={UserHome}/>
+                    <Stack.Screen name="Login" component={Login}/>
+                    <Stack.Screen name="Register" component={Register}/>
+                </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
