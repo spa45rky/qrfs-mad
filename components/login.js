@@ -2,14 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Pressable, KeyboardAvoidingView } from 'react-native';
 import React, { useCallback, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 export default function login() {
 
+    const [user, setUser] = React.useState("")
+    const [pass, setPass] = React.useState("")
+
     const bg = require('../assets/backgrounds/login-bg.png');
     const qrfsblack = require('../assets/logos/qrfs-black.png');
+    const baseURL = "http://localhost:3000/api/auth"
 
     const myOnPress = () => {
+        axios.post(baseURL, {
 
+        })
     }
 
     return(
@@ -17,9 +24,9 @@ export default function login() {
             <ImageBackground source={bg} resizeMode='cover' style={styles.bg}>
                 <Image source={qrfsblack} style={styles.logo}/>
                 <Text style={styles.labelText}>EMAIL</Text>
-                <TextInput value='' style={styles.textInput}/>
+                <TextInput value={user} onChangeText={setUser} style={styles.textInput}/>
                 <Text style={styles.labelText}>PASSWORD</Text>
-                <TextInput value='' style={styles.textInput}/>
+                <TextInput value={pass} onChangeText={setPass} style={styles.textInput}/>
                 <Pressable style={styles.forgotBtn}><Text style={styles.forgotText}>FORGOT PASSWORD</Text></Pressable>
                 <Pressable onPress={myOnPress} style={styles.loginBtn}><Text style={styles.loginText}>LOGIN</Text></Pressable>
                 <Text style={styles.signupText}>DON'T HAVE AN ACCOUNT? <Pressable style={styles.signupBtn}><Text style={styles.signupText1}>SIGN UP</Text></Pressable></Text>

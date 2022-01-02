@@ -4,7 +4,8 @@ import React, { useCallback, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Login from './components/login';
 import Register from './components/register';
-import UserDashboard from './components/dashboard';
+import Dashboard from './components/dashboard';
+import UserHome from './components/userHome';
 
 export default function App() {
   const [isLoginHere, setIsLoginHere] = React.useState(false)
@@ -19,7 +20,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <UserDashboard/>
+      <Login/>
       <StatusBar style="auto" />
     </View>
   );
