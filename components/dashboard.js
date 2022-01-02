@@ -9,7 +9,6 @@ import UserHome from './userHome';
 const Stack = createNativeStackNavigator();
 
 export default function userDashboard() {
-
     return(
             <NavigationContainer>
                 <Stack.Navigator initialRouteName='UserHome'>

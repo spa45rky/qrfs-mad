@@ -6,6 +6,7 @@ import Login from './components/login';
 import Register from './components/register';
 import Dashboard from './components/dashboard';
 import UserHome from './components/userHome';
+import UserDashboard from './components/dashboard';
 
 export default function App() {
   const [isLoginHere, setIsLoginHere] = React.useState(false)

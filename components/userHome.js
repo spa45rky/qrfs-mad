@@ -12,7 +12,9 @@ export default function userHome() {
     return(
         <View style={styles.container}>
             <ImageBackground source={bg} resizeMode='cover' style={styles.bg}>
-                <Text>test</Text>
+                <View style={styles.header}>
+                    <Text>User</Text>
+                </View>
             </ImageBackground>
         </View>
     )
@@ -29,9 +31,16 @@ const styles = StyleSheet.create({
     },
     bg: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
         height: '100%'
     },
+    header: {
+        height: '15%',
+        width: '100%',
+        backgroundColor: '#145DA0',
+        alignItems: 'flex-start',
+        justifyContent: 'center'
+    },
+
 })
