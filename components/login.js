@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Pressable, K
 import React, { useCallback, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import qs from 'qs';
 
 export default function login() {
 
@@ -11,11 +12,19 @@ export default function login() {
 
     const bg = require('../assets/backgrounds/login-bg.png');
     const qrfsblack = require('../assets/logos/qrfs-black.png');
-    const baseURL = "http://localhost:3000/api/auth"
+    const baseURL = "http://localhost:3000/api/auth/login"
 
     const myOnPress = () => {
-        axios.post(baseURL, {
-
+        let data = {'email': user, 'password': pass}
+        let config = {
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            }
+        }
+        axios.post(baseURL, qs.stringify(data), config).then((response)=>{
+            console.log(response.data)
+        }).catch((error)=> {
+            console.log(error)
         })
     }
 
