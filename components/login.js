@@ -5,15 +5,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import qs from 'qs';
 import QrfsButton from './shared/qrfsButton';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function login() {
+export default function login({navigation}) {
 
     const [user, setUser] = React.useState("")
     const [pass, setPass] = React.useState("")
 
     const bg = require('../assets/backgrounds/login-bg.png');
     const qrfsblack = require('../assets/logos/qrfs-black.png');
-    const baseURL = "http://localhost:3000/api/auth/login"
+    const baseURL = "https://qrfs-backend.herokuapp.com/api/auth/login"
 
     const onPress = () => {
         let data = {'email': user, 'password': pass}
@@ -23,7 +24,7 @@ export default function login() {
             }
         }
         axios.post(baseURL, qs.stringify(data), config).then((response)=>{
-            console.log(response.data)
+            response.data == 0 ? alert("WRONG CREDENTIALS!") : navigation.navigate("UserHome")
         }).catch((error)=> {
             console.log(error)
         })
@@ -39,7 +40,7 @@ export default function login() {
                 <TextInput value={pass} onChangeText={setPass} style={styles.textInput}/>
                 <Pressable style={styles.forgotBtn}><Text style={styles.forgotText}>FORGOT PASSWORD</Text></Pressable>
                 <QrfsButton text="LOGIN" onPress={onPress}/>
-                <Text style={styles.signupText}>DON'T HAVE AN ACCOUNT? <Pressable style={styles.signupBtn}><Text style={styles.signupText1}>SIGN UP</Text></Pressable></Text>
+                <Text style={styles.signupText}>DON'T HAVE AN ACCOUNT? <Pressable style={styles.signupBtn} onPress={() => navigation.navigate("Register")}><Text style={styles.signupText1}>SIGN UP</Text></Pressable></Text>
             </ImageBackground>
         </View>
     )
