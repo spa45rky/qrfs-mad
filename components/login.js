@@ -15,7 +15,7 @@ export default function login() {
     const qrfsblack = require('../assets/logos/qrfs-black.png');
     const baseURL = "http://localhost:3000/api/auth/login"
 
-    const myOnPress = () => {
+    const onPress = () => {
         let data = {'email': user, 'password': pass}
         let config = {
             headers: {
@@ -38,7 +38,7 @@ export default function login() {
                 <Text style={styles.labelText}>PASSWORD</Text>
                 <TextInput value={pass} onChangeText={setPass} style={styles.textInput}/>
                 <Pressable style={styles.forgotBtn}><Text style={styles.forgotText}>FORGOT PASSWORD</Text></Pressable>
-                <QrfsButton text="LOGIN" onPress={myOnPress}/>
+                <QrfsButton text="LOGIN" onPress={onPress}/>
                 <Text style={styles.signupText}>DON'T HAVE AN ACCOUNT? <Pressable style={styles.signupBtn}><Text style={styles.signupText1}>SIGN UP</Text></Pressable></Text>
             </ImageBackground>
         </View>

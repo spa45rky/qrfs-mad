@@ -2,13 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Pressable, KeyboardAvoidingView } from 'react-native';
 import React, { useCallback, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import QrfsButton from './shared/qrfsButton';
 
 export default function register() {
 
     const bg = require('../assets/backgrounds/register-bg.png');
     const qrfsblack = require('../assets/logos/qrfs-black-small.png');
 
-    const myOnPress = () => {
+    const onPress = () => {
 
     }
 
@@ -24,7 +25,7 @@ export default function register() {
                 <TextInput value='' style={styles.textInput}/>
                 <Text style={styles.labelText}>ORGANIZATION ID</Text>
                 <TextInput value='' style={styles.textInput}/>
-                <Pressable onPress={myOnPress} style={styles.loginBtn}><Text style={styles.signupText}>SIGN UP</Text></Pressable>
+                <QrfsButton text="SIGN UP" onPress={onPress}/>
             </ImageBackground>
         </View>
     )
@@ -69,16 +70,4 @@ const styles = StyleSheet.create({
         minHeight: 40
 
     },
-    loginBtn: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#EB610C',
-        width: 300,
-        height: '6%',
-        marginVertical: 25
-    },
-    signupText: {
-        fontSize: 27,
-        color: 'white'
-    }
 });
