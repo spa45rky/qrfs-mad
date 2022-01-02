@@ -13,6 +13,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoginHere, setIsLoginHere] = React.useState(false)
+  const [screen, setScreen] = React.useState('Login')
 
   // const getLoginInfo = async() => {
   //   try {
@@ -24,7 +25,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-                <Stack.Navigator initialRouteName='UserHome' screenOptions={{
+                <Stack.Navigator initialRouteName={screen} screenOptions={{
                   headerShown: false
                 }}>
                     <Stack.Screen name="UserHome" component={UserHome}/>
